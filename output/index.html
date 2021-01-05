@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="korean">
+<head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <title>How to use Cloudcraft</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">How to use Cloudcraft</a></h1>
+                <nav><ul>
+                    <li><a href="/category/aws-architecure.html">AWS Architecure</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/how-to-use-the-cloudcraftio.html">How to use the Cloudcraft.io</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2021-01-04T08:53:00+09:00">
+                Published: 월 04 1월 2021
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/hist.html">HIST</a>
+        </address>
+<p>In <a href="/category/aws-architecure.html">AWS Architecure</a>.</p>
+
+</footer><!-- /.post-info --><h1>cloudcraft.io에서의 AWS 연결</h1>
+<h2>1. LIVE 탭에서 AWS 계정 연결</h2>
+<ul>
+<li>ADD AWS ACCOUNT 버튼 클릭해서 AWS 계정을 연결</li>
+<li>AWS IME Role 설정 
+  Other AWS ID 연결 및 권한 설정
+  <img alt="system schema" src="images/add_ime_role.png">
+  <img alt="system schema" src="images/readonly_access.png">
+  <img alt="system schema" src="images/create_role.png"></li>
+</ul>
+<h2>2. Blueprint create</h2>
+<ul>
+<li>AWS 연결 후 SCAN NOW 버튼을 클릭해서 기존 AWS 서비스를 조회한다. </li>
+<li>AUTO LAYOUT 버튼을 클릭해서 기존에 등록된 AWS 서비스로 레이아웃을 그린다
+  <img alt="system schema" src="images/layout-001.png"></li>
+</ul>
+<h2>3. BUDGET 확인</h2>
+<ul>
+<li>BUDGET 탭을 클릭해서 현재 HIST에서 사용하는 BUDGET 확인
+  <img alt="system schema" src="images/layout-002.png"></li>
+</ul>
+<h2>4. EXPORT</h2>
+<ul>
+<li>생성된 Layout을 EXPORT 기능을 사용해서 Terraform code로 export 한다.</li>
+<li>상단 오른쪽 메뉴에서 EXPORT 버튼을 클릭한 후 Terraform code export 메뉴 클릭
+  <img alt="system schema" src="images/layout-003.png"></li>
+<li>생성된 Terraform code는 압축파일로 생성되어 다운로드된다. 
+  각 생성은 서비스별로 Terraform code가 생성되고 해당 폴더에 terragrunt.hcl 파일을 확인할 수 있다.  </li>
+</ul>
+<h2>5. 생성된 Terraform code 확인을 위해서</h2>
+<h4>Install Terragrunt 0.22 or newer 설치</h4>
+<ul>
+<li>https://terragrunt.gruntwork.io/docs/getting-started/install/ 참조</li>
+<li>Chocolatey 패키지 Manager를 사용해서 Install (관리자 권한으로 수행)<br>
+  choco install terragrunt  </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="n">JMS</span><span class="o">&gt;</span><span class="n">choco</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">terragrunt</span><span class="w"></span>
+<span class="n">Chocolatey</span><span class="w"> </span><span class="n">v0</span><span class="mf">.10.15</span><span class="w"></span>
+<span class="n">Installing</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="nl">packages</span><span class="p">:</span><span class="w"></span>
+<span class="n">terragrunt</span><span class="w"></span>
+<span class="k">By</span><span class="w"> </span><span class="n">installing</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">accept</span><span class="w"> </span><span class="n">licenses</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">packages</span><span class="p">.</span><span class="w"></span>
+
+<span class="n">terraform</span><span class="w"> </span><span class="n">v0</span><span class="mf">.14.3</span><span class="w"> </span><span class="o">[</span><span class="n">Approved</span><span class="o">]</span><span class="w"></span>
+<span class="n">terraform</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="n">files</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="n">completed</span><span class="p">.</span><span class="w"> </span><span class="n">Performing</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">installation</span><span class="w"> </span><span class="n">steps</span><span class="p">.</span><span class="w"></span>
+<span class="n">The</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="n">terraform</span><span class="w"> </span><span class="n">wants</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="s1">&#39;chocolateyInstall.ps1&#39;</span><span class="p">.</span><span class="w"></span>
+<span class="nl">Note</span><span class="p">:</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">don</span><span class="s1">&#39;t run this script, the installation will fail.</span>
+<span class="s1">Note: To confirm automatically next time, use &#39;</span><span class="o">-</span><span class="n">y</span><span class="s1">&#39; or consider:</span>
+<span class="s1">choco feature enable -n allowGlobalConfirmation</span>
+<span class="s1">Do you want to run the script?([Y]es/[A]ll - yes to all/[N]o/[P]rint): y</span>
+
+<span class="s1">Removing old terraform plugins</span>
+<span class="s1">Downloading terraform 64 bit</span>
+<span class="s1">  from &#39;</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">releases</span><span class="p">.</span><span class="n">hashicorp</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">terraform</span><span class="o">/</span><span class="mf">0.14.3</span><span class="o">/</span><span class="n">terraform_0</span><span class="mf">.14.3</span><span class="n">_windows_amd64</span><span class="p">.</span><span class="n">zip</span><span class="err">&#39;</span><span class="w"></span>
+<span class="nl">Progress</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="o">%</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Completed</span><span class="w"> </span><span class="n">download</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="n">JMS</span><span class="err">\</span><span class="n">AppData</span><span class="err">\</span><span class="k">Local</span><span class="err">\</span><span class="n">Temp</span><span class="err">\</span><span class="n">chocolatey</span><span class="err">\</span><span class="n">terraform</span><span class="err">\</span><span class="mf">0.14.3</span><span class="err">\</span><span class="n">terraform_0</span><span class="mf">.14.3</span><span class="n">_windows_amd64</span><span class="p">.</span><span class="n">zip</span><span class="w"> </span><span class="p">(</span><span class="mf">32.33</span><span class="w"> </span><span class="n">MB</span><span class="p">).</span><span class="w"></span>
+<span class="n">Download</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">terraform_0</span><span class="mf">.14.3</span><span class="n">_windows_amd64</span><span class="p">.</span><span class="n">zip</span><span class="w"> </span><span class="p">(</span><span class="mf">32.33</span><span class="w"> </span><span class="n">MB</span><span class="p">)</span><span class="w"> </span><span class="n">completed</span><span class="p">.</span><span class="w"></span>
+<span class="n">Hashes</span><span class="w"> </span><span class="k">match</span><span class="p">.</span><span class="w"></span>
+<span class="n">Extracting</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">Users</span><span class="err">\</span><span class="n">JMS</span><span class="err">\</span><span class="n">AppData</span><span class="err">\</span><span class="k">Local</span><span class="err">\</span><span class="n">Temp</span><span class="err">\</span><span class="n">chocolatey</span><span class="err">\</span><span class="n">terraform</span><span class="err">\</span><span class="mf">0.14.3</span><span class="err">\</span><span class="n">terraform_0</span><span class="mf">.14.3</span><span class="n">_windows_amd64</span><span class="p">.</span><span class="n">zip</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">ProgramData</span><span class="err">\</span><span class="n">chocolatey</span><span class="err">\</span><span class="n">lib</span><span class="err">\</span><span class="n">terraform</span><span class="err">\</span><span class="n">tools</span><span class="p">...</span><span class="w"></span>
+<span class="nl">C</span><span class="p">:</span><span class="err">\</span><span class="n">ProgramData</span><span class="err">\</span><span class="n">chocolatey</span><span class="err">\</span><span class="n">lib</span><span class="err">\</span><span class="n">terraform</span><span class="err">\</span><span class="n">tools</span><span class="w"></span>
+<span class="w"> </span><span class="n">ShimGen</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">successfully</span><span class="w"> </span><span class="n">created</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">shim</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">terraform</span><span class="p">.</span><span class="n">exe</span><span class="w"></span>
+<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">install</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">terraform</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">successful</span><span class="p">.</span><span class="w"></span>
+</code></pre></div>
+
+<ul>
+<li>Terraform code에서의 AWS account configuration<br>
+  terragrunt.hcl 편집.  </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">provider</span> <span class="s2">&quot;aws&quot;</span> <span class="p">{</span>
+  <span class="n">region</span>     <span class="o">=</span> <span class="s2">&quot;us-west-2&quot;</span>
+  <span class="n">access_key</span> <span class="o">=</span> <span class="s2">&quot;my-access-key&quot;</span>
+  <span class="n">secret_key</span> <span class="o">=</span> <span class="s2">&quot;my-secret-key&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>생성된 Terraform code를 사용해서 AWS에 적용하기 위한 방법</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ap-northeast-2
+$ terragrunt apply-all
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ap-northeast-2/icheck-api-container-new-nlb
+$ terragrunt apply
+</code></pre></div>
+
+<h2>6. Terragrunt 실행시</h2>
+<ul>
+<li>MFA 정책이 있으면 기본 AWS 권한으로 에러가 발생할 수 있음.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>session=$(aws sts get-session-token --profile <span class="nv">$AWS_PROFILE</span> --serial-number <span class="nv">$SECURITY_DEVICE_ARN</span> --token-code <span class="nv">$MFA_TOKEN</span>)
+export AWS_ACCESS_KEY_ID=$(echo <span class="nv">$session</span> | jq  -r .Credentials.AccessKeyId)
+export AWS_SECRET_ACCESS_KEY=$(echo <span class="nv">$session</span> | jq  -r .Credentials.SecretAccessKey)
+export AWS_SESSION_TOKEN=$(echo <span class="nv">$session</span> | jq -r .Credentials.SessionToken)
+export AWS_MFA_SERIAL_NUMBER=<span class="cp">${</span><span class="n">MFA_TOKEN</span><span class="cp">}</span>
+</code></pre></div>
+
+<p><img alt="system schema" src="images/JMS.png"></p>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://getpelican.com/">Pelican</a></li>
+                            <li><a href="https://www.python.org/">Python.org</a></li>
+                            <li><a href="https://palletsprojects.com/p/jinja/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
