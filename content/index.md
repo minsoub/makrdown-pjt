@@ -72,6 +72,7 @@ $ terragrunt apply-all
 ```
 $ cd ap-northeast-2/icheck-api-container-new-nlb
 $ terragrunt apply
+$ terragrunt apply --terragrunt-download-dir C:\DevPJT\Markdown-webpage\.cache
 ```
 
 ## 6. Terragrunt 실행시 
