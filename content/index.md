@@ -85,4 +85,6 @@ export AWS_SESSION_TOKEN=$(echo $session | jq -r .Credentials.SessionToken)
 export AWS_MFA_SERIAL_NUMBER=${MFA_TOKEN}
 ```
 
+dd
+
 ![system schema](images/JMS.png)
