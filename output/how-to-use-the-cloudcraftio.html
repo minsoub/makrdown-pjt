@@ -119,7 +119,29 @@ $ terragrunt apply
 $ terragrunt apply --terragrunt-download-dir C:<span class="se">\D</span>evPJT<span class="se">\M</span>arkdown-webpage<span class="se">\.</span>cache
 </code></pre></div>
 
-<h2>6. Terragrunt 실행시</h2>
+<h2>6. Terragrunt Troubleshooting</h2>
+<ul>
+<li>AWS 권한 설정</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="err">generate &quot;provider&quot; {</span>
+<span class="err">  path = &quot;provider.tf&quot;</span>
+<span class="err">  if_exists = &quot;overwrite_terragrunt&quot;</span>
+<span class="err">  contents = &lt;&lt;EOF</span>
+<span class="err">provider &quot;aws&quot; {</span>
+<span class="err">  region = &quot;ap-northeast-2&quot;</span>
+<span class="err">  access_key = &quot;xxxxxxxxxxxxxx&quot;</span>
+<span class="err">  secret_key = &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
+<span class="err">}</span>
+<span class="err">EOF</span>
+<span class="err">}</span>
+</code></pre></div>
+
+<ul>
+<li>.cache 디렉토리에서의 version.tf <br>
+이유는 모르겠지만 버전 에러가 발생한다. 해당 발생된 에러 확인 후 버전을 변경한다.</li>
+<li></li>
+</ul>
+<h2>7. Terragrunt 실행시 (필요하다면)</h2>
 <ul>
 <li>MFA 정책이 있으면 기본 AWS 권한으로 에러가 발생할 수 있음.</li>
 </ul>

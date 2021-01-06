@@ -74,8 +74,26 @@ $ cd ap-northeast-2/icheck-api-container-new-nlb
 $ terragrunt apply
 $ terragrunt apply --terragrunt-download-dir C:\DevPJT\Markdown-webpage\.cache
 ```
+## 6. Terragrunt Troubleshooting
+- AWS 권한 설정
+```
+generate "provider" {
+  path = "provider.tf"
+  if_exists = "overwrite_terragrunt"
+  contents = <<EOF
+provider "aws" {
+  region = "ap-northeast-2"
+  access_key = "xxxxxxxxxxxxxx"
+  secret_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+}
+EOF
+}
+```
+- .cache 디렉토리에서의 version.tf   
+이유는 모르겠지만 버전 에러가 발생한다. 해당 발생된 에러 확인 후 버전을 변경한다.
+- 
 
-## 6. Terragrunt 실행시 
+## 7. Terragrunt 실행시 (필요하다면)
 - MFA 정책이 있으면 기본 AWS 권한으로 에러가 발생할 수 있음.
 ```
 session=$(aws sts get-session-token --profile $AWS_PROFILE --serial-number $SECURITY_DEVICE_ARN --token-code $MFA_TOKEN)
@@ -85,6 +103,5 @@ export AWS_SESSION_TOKEN=$(echo $session | jq -r .Credentials.SessionToken)
 export AWS_MFA_SERIAL_NUMBER=${MFA_TOKEN}
 ```
 
-dd
 
 ![system schema](images/JMS.png)
